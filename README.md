@@ -65,5 +65,5 @@ $ task typecheck
 
 ```bash
 # uv仮想環境からrequirements.txtを作成(パッケージの追加・変更を行った際にrequirements.txtを最新化する)
-$ uv export --format=requirements.txt
+$ uv export --format=requirements.txt > requirements.txt
 ```
