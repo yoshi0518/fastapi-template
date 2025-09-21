@@ -3,18 +3,18 @@ from fastapi import FastAPI
 from fastapi.responses import ORJSONResponse
 from starlette.middleware.cors import CORSMiddleware
 
+from config import config
+
 app = FastAPI(
-    title="FastAPI",
-    version="1.0.0",
+    title=config.fastapi_title,
+    version=config.fastapi_version,
     default_response_class=ORJSONResponse,
 )
 
 # CORS設定
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-    ],
+    allow_origins=config.cors_allow_origins.split(","),
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -33,4 +33,4 @@ def read_item(item_id: int, q: str | None = None):
 
 
 if __name__ == "__main__":
-    uvicorn.run("src:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("src:app", host=config.fastapi_host, port=config.fastapi_port, reload=config.debug)
