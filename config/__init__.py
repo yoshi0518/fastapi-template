@@ -7,7 +7,6 @@ from pydantic_settings import BaseSettings
 
 class Config(BaseSettings):
     # Common
-    env: str = "dev"
     debug: bool = True
 
     # FastAPI
@@ -15,6 +14,9 @@ class Config(BaseSettings):
     fastapi_port: int = 8000
     fastapi_title: str = "FastAPI(Local)"
     fastapi_version: str = "1.0.0"
+
+    # Cors
+    cors_allow_origins: str = "http://localhost:3000"
 
 
 config = Config()
